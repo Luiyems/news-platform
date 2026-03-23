@@ -1,0 +1,21 @@
+# Dependencias
+node_modules/
+
+# Variables de entorno (CLAVES, PASSWORDS, TOKENS)
+.env
+
+# Logs
+logs/
+*.log
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# Archivos de build (si usas)
+dist/
+build/
+
+# Archivos temporales
+tmp/
+temp/
