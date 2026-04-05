@@ -9,9 +9,11 @@ import express from "express";
 import cors from "cors";
 import helmet from "helmet";
 import newsRoutes from "./routes/newsRoutes.js";
+import cron from "node-cron";
+import { fetchRSSNews } from "./services/rssService.js";
 // Importa el middleware de Swagger UI para Express.
 // Este paquete permite mostrar una interfaz web interactiva
-// donde puedes visualizar y probar los endpoints de tu API.
+// donde puedes visualizar y probar los endpoints de la API.
 import swaggerUi from "swagger-ui-express";
 // Importa la configuración de Swagger (OpenAPI) que has definido.
 // Este archivo (swagger.js) contiene la documentación de la API,
@@ -48,7 +50,18 @@ app.use("/api/news", newsRoutes);
 // de la API usando Swagger UI, cargando la interfaz y utilizando
 // la especificación definida en swaggerSpec.
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+
+// probar RSS
 /**
  * Exportar la aplicación
  */
+/**
+ * Ejecutar actualización de noticias automáticamente cada 30 minutos
+ */
+cron.schedule("*/180 * * * *", async () => {
+    await fetchRSSNews();
+});
+
+fetchRSSNews();
+
 export default app;
