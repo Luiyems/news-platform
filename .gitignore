@@ -1,21 +1,21 @@
-# Dependencias
+# Dependencias:
 node_modules/
 
-# Variables de entorno (CLAVES, PASSWORDS, TOKENS)
+# Variables de entorno (CLAVES, PASSWORDS, TOKENS):
 .env
 
 # Logs
 logs/
 *.log
 
-# Archivos del sistema
+# Archivos del sistema:
 .DS_Store
 Thumbs.db
 
-# Archivos de build (si usas)
+# Archivos de build:
 dist/
 build/
 
-# Archivos temporales
+# Archivos temporales:
 tmp/
 temp/

@@ -4,12 +4,9 @@
  * Servicio encargado de obtener noticias desde fuentes externas (RSS)
  * y guardarlas en la base de datos con clasificación por categorías.
  */
-
 import Parser from "rss-parser";
 import { query } from "../config/database.js";
-
 const parser = new Parser();
-
 /**
  * Lista de fuentes RSS
  */
@@ -89,10 +86,8 @@ const saveNews = async (item, source) => {
 
         // Unimos título + contenido para analizar
         const text = item.title + " " + (item.contentSnippet || "");
-
         // Clasificamos categoría automáticamente
         const categoryId = classifyCategory(text);
-
         const sql = `
             INSERT INTO news (
                 title,
@@ -106,7 +101,6 @@ const saveNews = async (item, source) => {
             VALUES ($1, $2, $3, $4, $5, $6, $7)
             ON CONFLICT (link) DO NOTHING
         `;
-
         const values = [
             item.title,
             item.contentSnippet || "",
@@ -116,43 +110,26 @@ const saveNews = async (item, source) => {
             categoryId,
             item.link || item.guid || item.title // fallback por si falta link
         ];
-
         await query(sql, values);
-
         console.log("Guardada:", item.title);
-
     } catch (error) {
-
         console.error("Error guardando noticia:", error);
-
     }
 };
-
 /**
  * Función principal para obtener noticias desde RSS
  */
 export const fetchRSSNews = async () => {
-
     try {
-
         console.log("Actualizando noticias RSS...");
-
         for (const feed of feeds) {
-
             const data = await parser.parseURL(feed.url);
-
             for (const item of data.items) {
-
                 await saveNews(item, feed.source);
-
             }
         }
-
         console.log("Noticias RSS actualizadas correctamente");
-
     } catch (error) {
-
         console.error("Error obteniendo RSS:", error);
-
     }
 };

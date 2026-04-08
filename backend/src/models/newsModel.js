@@ -23,6 +23,7 @@ export const getAllNews = async () => {
         LEFT JOIN categories
         ON news.category_id = categories.id
         ORDER BY published_at DESC
+        LIMIT 20
     `;
     const result = await query(sql);
     return result.rows;
@@ -48,6 +49,7 @@ export const getNewsByCategory = async (categoryId) => {
         FROM news
         WHERE category_id = $1
         ORDER BY published_at DESC
+        LIMIT 20
     `;
     const result = await query(sql, [categoryId]);
     return result.rows;

@@ -1,0 +1,203 @@
+body {
+    font-family: 'Georgia', serif;
+    margin: 0;
+    background: #f4f4f4;
+    transition: 0.3s;
+}
+
+/* HEADER */
+.header {
+    background: #111;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+.logo {
+    margin: 0;
+    letter-spacing: 3px;
+}
+
+.date {
+    font-size: 14px;
+}
+
+/* NAV */
+.nav {
+    display: flex;
+    gap: 10px;
+    padding: 15px;
+    background: white;
+    border-bottom: 1px solid #ddd;
+}
+
+/* INPUT */
+input {
+    flex: 1;
+    padding: 10px;
+}
+
+/* SELECT */
+select {
+    padding: 10px;
+}
+
+#news-detail {
+    max-width: 1000px;
+    margin: auto;
+    margin-top: 40px;
+    text-align: center;
+}
+
+h1 {
+  text-align: center;
+}
+
+/* BOTONES ACCESIBILIDAD */
+.accessibility-controls button {
+    padding: 8px;
+    cursor: pointer;
+}
+
+/* GRID */
+#news-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+/* TARJETAS */
+article {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+article:hover {
+    transform: translateY(-5px);
+}
+
+/* TITULOS */
+h2 {
+    font-size: 18px;
+}
+
+/* LINKS */
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    color: #0077cc;
+}
+
+/* FOCO ACCESIBLE */
+:focus {
+    outline: 3px solid #0077cc;
+}
+
+/* MODO ALTO CONTRASTE */
+.high-contrast {
+    background: black;
+    color: yellow;
+}
+
+.back-button {
+    display: block;
+    width: fit-content;
+    margin: 20px auto;
+
+    padding: 10px 15px;
+    background: #0077cc;
+    color: white;
+    border-radius: 6px;
+
+    text-decoration: none;
+    font-weight: bold;
+
+    transition: all 0.2s ease;
+}
+
+/* HOVER */
+.back-button:hover {
+    background: #005fa3;
+}
+
+/* ACTIVE (cuando haces click) */
+.back-button:active {
+    transform: scale(0.97);
+}
+
+/* FOOTER */
+.footer {
+    background: #111;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+}
+
+.footer a {
+    color: #ccc;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    color: white;
+}
+
+/* BANNER DE COOKIES */
+.cookie-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    background: #222;
+    color: white;
+    padding: 15px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    box-sizing: border-box;
+}
+
+/* TEXTO */
+.cookie-text {
+    flex: 1;
+}
+
+/* CONTENEDOR BOTONES */
+.cookie-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+/* BOTONES */
+.cookie-buttons button {
+    padding: 8px 12px;
+    cursor: pointer;
+    white-space: nowrap; /* evita salto raro */
+}
+
+.cookie-buttons button {
+    background: white;
+    border: none;
+    border-radius: 5px;
+}
+
+#accept-cookies {
+    background: #0077cc;
+    color: white;
+}
+
+#reject-cookies {
+    background: #555;
+    color: white;
+}
