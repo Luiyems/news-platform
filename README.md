@@ -197,6 +197,22 @@ npm test -- --coverage
 | GET | `/` | Página principal |
 | GET | `/health` | Estado de la API |
 
+### Documentación Interactiva (Swagger)
+
+Prueba la API directamente desde el navegador:
+
+```
+http://localhost:3000/api-docs
+```
+
+Desde Swagger podrás:
+- Ver todos los endpoints disponibles
+- Probar las peticiones (GET, POST, etc.)
+- Ver parámetros y respuestas de cada endpoint
+- Ver la documentación automática de la API
+
+**Nota:** Swagger solo está disponible en el entorno de desarrollo.
+
 ### Ejemplos de uso
 
 ```bash
