@@ -9,7 +9,7 @@
 
 ## Descripción
 
-**El rayo** es un periódico digital minimalista con noticias al instante. Una plataforma de noticias moderna desarrollada con Node.js, Express y PostgreSQL, diseñada con accesibilidad WCAG 2.1 y lista para desplegar con Docker.
+**El RAYO** es un periódico digital minimalista con noticias al instante. Una plataforma de noticias moderna desarrollada con Node.js, Express y PostgreSQL, diseñada con accesibilidad WCAG 2.1 y lista para desplegar con Docker.
 
 ## Características
 
@@ -50,8 +50,8 @@
 ### Paso 1: Clonar el repositorio
 
 ```bash
-git clone https://github.com/tu-usuario/el-rayo.git
-cd el-rayo
+git clone https://github.com/Luiyems/news-platform.git
+cd news-platform
 ```
 
 ### Paso 2: Instalar dependencias
@@ -107,7 +107,7 @@ http://localhost:3000
 ### Paso 1: Clonar el repositorio
 
 ```bash
-git clone https://github.com/tu-usuario/el-rayo.git
+git clone https://github.com/Luiyems/news-platform.git
 cd el-rayo
 ```
 
@@ -229,7 +229,7 @@ curl http://localhost:3000/api/news/category/1
 ## Estructura del Proyecto
 
 ```
-el-rayo/
+news-platform/
 ├── backend/
 │   └── src/
 │       ├── config/          # Configuración (database, logger, swagger)
@@ -342,4 +342,4 @@ docker-compose exec app npm test -- --verbose
 
 ¡Hecho con amor para el periodismo digital!
 
-**El rayo - Noticias al instante**
+**El RAYO - Noticias al instante**
