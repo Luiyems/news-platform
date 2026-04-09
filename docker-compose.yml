@@ -1,0 +1,62 @@
+# docker-compose.yml
+# Orchestrates the application and database containers
+
+version: '3.8'
+
+services:
+  # Application container
+  app:
+    build: .
+    container_name: elrayo-app
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - DB_HOST=db
+      - DB_USER=postgres
+      - DB_PASSWORD=postgres
+      - DB_NAME=news_platform
+      - DB_PORT=5432
+      - PORT=3000
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: unless-stopped
+    networks:
+      - elrayo-network
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:3000/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # PostgreSQL database container
+  db:
+    image: postgres:14-alpine
+    container_name: elrayo-db
+    environment:
+      POSTGRES_DB: news_platform
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./database/schema.sql:/docker-entrypoint-initdb.d/schema.sql:ro
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d news_platform"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+    restart: unless-stopped
+    networks:
+      - elrayo-network
+
+networks:
+  elrayo-network:
+    driver: bridge
+
+volumes:
+  pgdata:

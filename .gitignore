@@ -1,21 +1,40 @@
-# Dependencias:
+# Dependencias
 node_modules/
 
-# Variables de entorno (CLAVES, PASSWORDS, TOKENS):
+# Variables de entorno (CLAVES, PASSWORDS, TOKENS)
 .env
+.env.local
+.env.*.local
 
 # Logs
 logs/
 *.log
 
-# Archivos del sistema:
+# Archivos del sistema
 .DS_Store
 Thumbs.db
 
-# Archivos de build:
+# Archivos de build
 dist/
 build/
 
-# Archivos temporales:
+# Archivos temporales
 tmp/
 temp/
+
+# Docker
+.dockerignore
+docker-compose.override.yml
+
+# Test coverage
+coverage/
+.nyc_output/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# Credenciales de base de datos local
+*.sqlbackup
+*.bak
