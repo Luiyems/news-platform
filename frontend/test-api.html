@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El rayo - Test API</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; max-width: 1200px; margin: 0 auto; }
+        h1 { color: #111; }
+        .news-item { border: 1px solid #ccc; padding: 15px; margin: 10px 0; }
+        .news-title { font-weight: bold; font-size: 18px; }
+        .news-meta { color: #666; font-size: 14px; margin-top: 5px; }
+        .loading { color: blue; }
+        .error { color: red; }
+    </style>
+</head>
+<body>
+    <h1>El rayo - Test de API</h1>
+    <p id="status" class="loading">Cargando...</p>
+    <div id="news-list"></div>
+    
+    <script>
+    const statusEl = document.getElementById('status');
+    const newsList = document.getElementById('news-list');
+    
+    async function loadNews() {
+        try {
+            statusEl.textContent = 'Fetching /api/news...';
+            
+            const response = await fetch('/api/news');
+            statusEl.textContent = 'Status: ' + response.status;
+            
+            if (!response.ok) {
+                throw new Error('HTTP ' + response.status);
+            }
+            
+            const data = await response.json();
+            statusEl.textContent = 'Cargadas ' + data.length + ' noticias';
+            
+            newsList.innerHTML = data.map(news => `
+                <div class="news-item">
+                    <div class="news-title">${news.title}</div>
+                    <div class="news-meta">${news.source} - ${news.category}</div>
+                    <p>${news.summary || ''}</p>
+                </div>
+            `).join('');
+            
+        } catch (error) {
+            statusEl.textContent = 'Error: ' + error.message;
+            statusEl.className = 'error';
+            console.error(error);
+        }
+    }
+    
+    loadNews();
+    </script>
+</body>
+</html>

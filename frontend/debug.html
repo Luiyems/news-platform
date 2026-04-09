@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El rayo - Debug</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; max-width: 800px; margin: 0 auto; }
+        .error { color: red; background: #fee; padding: 10px; border: 1px solid red; }
+        .success { color: green; background: #efe; padding: 10px; border: 1px solid green; }
+        pre { background: #f5f5f5; padding: 10px; overflow: auto; }
+        button { padding: 10px 20px; font-size: 16px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h1>El rayo - Debug</h1>
+    <button onclick="testAPI()">Probar API</button>
+    <button onclick="testDirectFetch()">Fetch directo</button>
+    <div id="output"></div>
+    
+    <script>
+    const output = document.getElementById('output');
+    
+    function log(msg, isError = false) {
+        output.innerHTML += `<p class="${isError ? 'error' : 'success'}">${msg}</p>`;
+    }
+    
+    async function testAPI() {
+        output.innerHTML = '';
+        log('Probando API...');
+        
+        try {
+            const res = await fetch('/api/news');
+            log(`Status: ${res.status}`);
+            
+            const data = await res.json();
+            log(`Noticias recibidas: ${data.length}`);
+            log(`Primera: ${data[0]?.title || 'N/A'}`);
+            log('✅ API funcionando correctamente!');
+        } catch (e) {
+            log(`Error: ${e.message}`, true);
+        }
+    }
+    
+    async function testDirectFetch() {
+        output.innerHTML = '';
+        try {
+            const url = 'http://localhost:3000/api/news';
+            log(`URL: ${url}`);
+            const res = await fetch(url);
+            const data = await res.json();
+            log(`✅ ${data.length} noticias`);
+        } catch (e) {
+            log(`CORS Error: ${e.message}`, true);
+        }
+    }
+    </script>
+</body>
+</html>

@@ -7,9 +7,7 @@
 import Parser from "rss-parser";
 import { query } from "../config/database.js";
 const parser = new Parser();
-/**
- * Lista de fuentes RSS
- */
+
 const feeds = [
     {
         url: "https://feeds.bbci.co.uk/news/rss.xml",
@@ -21,15 +19,9 @@ const feeds = [
     }
 ];
 
-/**
- * Clasifica una noticia según su contenido
- * Devuelve el ID de la categoría
- */
-const classifyCategory = (text) => {
-
+export const classifyCategory = (text) => {
     const content = text.toLowerCase();
 
-    // Política
     if (
         content.includes("government") ||
         content.includes("president") ||
@@ -40,7 +32,6 @@ const classifyCategory = (text) => {
         return 1;
     }
 
-    // Economía
     if (
         content.includes("economy") ||
         content.includes("inflation") ||
@@ -51,7 +42,6 @@ const classifyCategory = (text) => {
         return 2;
     }
 
-    // Deportes
     if (
         content.includes("football") ||
         content.includes("soccer") ||
@@ -62,7 +52,6 @@ const classifyCategory = (text) => {
         return 3;
     }
 
-    // Tecnología
     if (
         content.includes("technology") ||
         content.includes("ai") ||
@@ -73,20 +62,12 @@ const classifyCategory = (text) => {
         return 5;
     }
 
-    // Por defecto → Actualidad
     return 4;
 };
 
-/**
- * Guarda una noticia en la base de datos
- */
 const saveNews = async (item, source) => {
-
     try {
-
-        // Unimos título + contenido para analizar
         const text = item.title + " " + (item.contentSnippet || "");
-        // Clasificamos categoría automáticamente
         const categoryId = classifyCategory(text);
         const sql = `
             INSERT INTO news (
@@ -108,17 +89,14 @@ const saveNews = async (item, source) => {
             source,
             item.pubDate || new Date(),
             categoryId,
-            item.link || item.guid || item.title // fallback por si falta link
+            item.link || item.guid || item.title
         ];
         await query(sql, values);
-        console.log("Guardada:", item.title);
     } catch (error) {
         console.error("Error guardando noticia:", error);
     }
 };
-/**
- * Función principal para obtener noticias desde RSS
- */
+
 export const fetchRSSNews = async () => {
     try {
         console.log("Actualizando noticias RSS...");

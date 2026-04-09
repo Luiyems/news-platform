@@ -2,68 +2,113 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>News Platform</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="El rayo - Diario minimalista con noticias al instante. Periódico digital accesible para todos.">
+    <meta name="theme-color" content="#111111">
+    <title>El rayo - Noticias al instante</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body>
+    <header class="header" role="banner">
+        <div class="header-main">
+            <a href="/" class="logo-link">
+                <span class="logo-text">EL RAYO</span>
+            </a>
+            <span class="logo-separator">|</span>
+            <span class="logo-subtitle">Noticias al instante</span>
+        </div>
+        <p class="date" id="current-date" aria-label="Fecha actual"></p>
+    </header>
 
-<header class="header">
-    <h1 class="logo">NEWS PLATFORM</h1>
-    <p class="date" id="current-date"></p>
-</header>
+    <nav class="nav" role="navigation" aria-label="Navegación principal">
+        <div class="nav-categories" role="group" aria-label="Categorías">
+            <button type="button" class="category-btn active" data-category="all">Todas</button>
+            <button type="button" class="category-btn" data-category="1">Política</button>
+            <button type="button" class="category-btn" data-category="2">Economía</button>
+            <button type="button" class="category-btn" data-category="3">Deportes</button>
+            <button type="button" class="category-btn" data-category="4">Actualidad</button>
+            <button type="button" class="category-btn" data-category="5">Tecnología</button>
+        </div>
 
-<nav class="nav">
+        <div class="nav-controls">
+            <div class="search-container">
+                <label for="search-input" class="visually-hidden">Buscar noticias</label>
+                <input 
+                    type="search" 
+                    id="search-input" 
+                    placeholder="Buscar noticias..." 
+                    aria-describedby="search-hint"
+                >
+                <span id="search-hint" class="visually-hidden">Escribe palabras clave para filtrar noticias</span>
+            </div>
 
-    <input 
-        type="text" 
-        id="search-input" 
-        placeholder="Buscar noticias..." 
-        aria-label="Buscar noticias"
-    >
+            <div class="filter-container">
+                <label for="categoria-select" class="visually-hidden">Filtrar por categoría</label>
+                <select id="categoria-select" aria-describedby="category-hint">
+                    <option value="all">Todas las categorías</option>
+                    <option value="1">Política</option>
+                    <option value="2">Economía</option>
+                    <option value="3">Deportes</option>
+                    <option value="4">Actualidad</option>
+                    <option value="5">Tecnología</option>
+                </select>
+            </div>
+        </div>
 
-    <select id="categoria-select" aria-label="Filtrar por categoría">
-        <option value="all">Todas</option>
-        <option value="1">Política</option>
-        <option value="2">Economía</option>
-        <option value="3">Deportes</option>
-        <option value="4">Actualidad</option>
-        <option value="5">Tecnología</option>
-    </select>
+        <div class="accessibility-controls" role="group" aria-label="Controles de accesibilidad">
+            <button type="button" id="increase-font" aria-label="Aumentar tamaño de fuente" title="Aumentar tamaño de letra">
+                <span aria-hidden="true">A+</span>
+            </button>
+            <button type="button" id="decrease-font" aria-label="Disminuir tamaño de fuente" title="Reducir tamaño de letra">
+                <span aria-hidden="true">A-</span>
+            </button>
+            <button type="button" id="high-contrast" aria-label="Activar alto contraste" title="Modo alto contraste">
+                Contraste
+            </button>
+            <button type="button" id="reset-accessibility" aria-label="Restablecer accesibilidad" title="Restablecer valores">
+                Reset
+            </button>
+        </div>
+    </nav>
 
-    <!-- ACCESIBILIDAD -->
-    <div class="accessibility-controls">
-        <button id="increase-font">A+</button>
-        <button id="decrease-font">A-</button>
-        <button id="high-contrast">Contraste</button>
-    </div>
+    <main id="main-content" class="main-content" role="main" aria-label="Contenido principal de noticias">
+        <h2 class="visually-hidden">Noticias recientes</h2>
+        <div id="news-container" class="news-grid" aria-live="polite" aria-atomic="false">
+        </div>
+        <div id="loading" class="loading" role="status" aria-live="polite">
+            <span class="loading-spinner" aria-hidden="true"></span>
+            <span>Cargando noticias...</span>
+        </div>
+        <div id="no-results" class="no-results" role="status" hidden>
+            No se encontraron noticias que coincidan con tu búsqueda.
+        </div>
+    </main>
 
-</nav>
+    <aside id="cookie-banner" class="cookie-banner" role="dialog" aria-labelledby="cookie-title" aria-describedby="cookie-desc" aria-live="polite">
+        <div class="cookie-content">
+            <h3 id="cookie-title">Política de cookies</h3>
+            <p id="cookie-desc">Este sitio utiliza cookies para mejorar tu experiencia de lectura.</p>
+        </div>
+        <div class="cookie-buttons">
+            <button type="button" id="accept-cookies" class="btn btn-primary">Aceptar</button>
+            <button type="button" id="reject-cookies" class="btn btn-secondary">Rechazar</button>
+        </div>
+    </aside>
 
-<main id="news-container"></main>
+    <footer class="footer" role="contentinfo">
+        <div class="footer-content">
+            <p>&copy; <span id="current-year">2026</span> <strong>EL RAYO</strong> - Diario minimalista</p>
+            <nav aria-label="Navegación del pie de página">
+                <ul class="footer-links">
+                    <li><a href="privacy-policy.html">Política de privacidad</a></li>
+                    <li><a href="terms-of-use.html">Términos de uso</a></li>
+                    <li><a href="accessibility.html">Accesibilidad</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
 
-<div id="cookie-banner" class="cookie-banner" role="dialog" aria-live="polite">
-    
-    <p class="cookie-text">
-        Este sitio utiliza cookies para mejorar tu experiencia.
-    </p>
-
-    <div class="cookie-buttons">
-        <button id="accept-cookies">Aceptar</button>
-        <button id="reject-cookies">Rechazar</button>
-    </div>
-
-</div>
-
-<footer class="footer">
-    <p>© 2026 News Platform</p>
-    <p>
-        <a href="#">Política de privacidad</a> | 
-        <a href="#">Política de cookies</a>
-    </p>
-</footer>
-
-<script src="js/app.js"></script>
-
+    <script src="js/app.js"></script>
 </body>
 </html>

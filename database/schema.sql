@@ -15,8 +15,14 @@ CREATE TABLE news (
     category_id INT,
     published_at TIMESTAMP,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    link TEXT UNIQUE,
 
     CONSTRAINT fk_category
     FOREIGN KEY(category_id)
     REFERENCES categories(id)
 );
+
+-- Índices para mejorar rendimiento de consultas
+CREATE INDEX idx_news_category_id ON news(category_id);
+CREATE INDEX idx_news_published_at ON news(published_at DESC);
+CREATE INDEX idx_news_source ON news(source);

@@ -1,22 +1,218 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Detalle de Noticia</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="El rayo - Leer noticia completa">
+    <title>El rayo - Detalle de noticia</title>
     <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .detail-page {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: var(--space-xl) var(--space-md);
+        }
+        
+        .detail-header {
+            margin-bottom: var(--space-xl);
+        }
+        
+        .detail-back {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-sm);
+            color: #c41e3a;
+            text-decoration: none;
+            font-weight: 600;
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            margin-bottom: var(--space-lg);
+            transition: opacity 0.2s;
+        }
+        
+        .detail-back:hover {
+            opacity: 0.7;
+        }
+        
+        .detail-back::before {
+            content: '←';
+        }
+        
+        .detail-category {
+            display: inline-block;
+            background: #c41e3a;
+            color: white;
+            padding: 4px 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: var(--space-md);
+            font-family: var(--font-sans);
+        }
+        
+        .detail-title {
+            font-family: var(--font-serif);
+            font-size: 2.2rem;
+            font-weight: 700;
+            line-height: 1.2;
+            color: #111;
+            margin: 0 0 var(--space-lg);
+        }
+        
+        .detail-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-md);
+            padding-bottom: var(--space-lg);
+            border-bottom: 1px solid #ddd;
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .detail-source {
+            font-weight: 700;
+            color: #c41e3a;
+        }
+        
+        .detail-date {
+            color: #888;
+        }
+        
+        .detail-body {
+            padding: var(--space-xl) 0;
+        }
+        
+        .detail-body p {
+            font-family: var(--font-serif);
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: #333;
+            margin: 0 0 var(--space-lg);
+        }
+        
+        .detail-body p:first-of-type::first-letter {
+            font-size: 3rem;
+            float: left;
+            line-height: 1;
+            padding-right: 12px;
+            padding-top: 4px;
+            font-weight: 700;
+            color: #c41e3a;
+        }
+        
+        .detail-actions {
+            margin-top: var(--space-xl);
+            padding-top: var(--space-lg);
+            border-top: 2px solid #c41e3a;
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-md);
+        }
+        
+        .detail-link {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-sm);
+            background: #111;
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            font-weight: 600;
+            font-family: var(--font-sans);
+            transition: background 0.2s;
+        }
+        
+        .detail-link:hover {
+            background: #c41e3a;
+        }
+        
+        .detail-loading {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--space-xl);
+            color: #666;
+            font-family: var(--font-sans);
+        }
+        
+        .detail-error {
+            text-align: center;
+            padding: var(--space-xl);
+        }
+        
+        .detail-error h2 {
+            color: #c41e3a;
+            margin-bottom: var(--space-md);
+        }
+        
+        .detail-error a {
+            display: inline-block;
+            margin-top: var(--space-md);
+            color: #c41e3a;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        @media (max-width: 768px) {
+            .detail-title {
+                font-size: 1.75rem;
+            }
+            
+            .detail-body p {
+                font-size: 1.05rem;
+            }
+            
+            .detail-body p:first-of-type::first-letter {
+                font-size: 2.5rem;
+            }
+            
+            .detail-meta {
+                flex-direction: column;
+                gap: var(--space-sm);
+            }
+        }
+    </style>
 </head>
 
 <body>
+    <header class="header" role="banner">
+        <div class="header-main">
+            <a href="index.html" class="logo-link">
+                <span class="logo-text">EL RAYO</span>
+            </a>
+            <span class="logo-separator">|</span>
+            <span class="logo-subtitle">Noticias al instante</span>
+        </div>
+    </header>
 
-<header>
-    <h1>Detalle de noticia</h1>
-    <a href="index.html" class="back-button">Volver</a>
-</header>
+    <main class="detail-page" role="main">
+        <nav aria-label="Volver a noticias">
+            <a href="index.html" class="detail-back">Volver</a>
+        </nav>
+        
+        <article id="news-detail" role="article">
+            <div class="detail-loading" id="loading">
+                <span class="loading-spinner"></span>
+                <span>&nbsp;&nbsp;Cargando noticia...</span>
+            </div>
+        </article>
+    </main>
 
-<main id="news-detail"></main>
+    <footer class="footer" role="contentinfo">
+        <div class="footer-content">
+            <p>&copy; <span id="current-year">2026</span> <strong>EL RAYO</strong> - Diario minimalista</p>
+            <nav aria-label="Navegación del pie">
+                <ul class="footer-links">
+                    <li><a href="privacy-policy.html">Política de privacidad</a></li>
+                    <li><a href="terms-of-use.html">Términos de uso</a></li>
+                    <li><a href="accessibility.html">Accesibilidad</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
 
-<script src="js/detail.js"></script>
-
+    <script src="js/detail.js"></script>
 </body>
 </html>
