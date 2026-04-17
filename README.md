@@ -13,14 +13,14 @@
 
 ## Características
 
-- ✨ Diseño minimalista al estilo periódico
-- ♿ Accesibilidad WCAG 2.1 nivel AA
-- 🔍 Buscador de noticias en tiempo real
-- 📂 Filtro por categorías (Política, Economía, Deportes, Actualidad, Tecnología)
-- 🌐 API RESTful con Express
-- 🐳 Desplegable con Docker
-- ✅ Tests con Mocha + Chai
-- 🔄 Actualización automática de noticias RSS
+- Diseño minimalista al estilo periódico
+- Accesibilidad WCAG 2.1 nivel AA
+- Buscador de noticias en tiempo real
+- Filtro por categorías (Política, Economía, Deportes, Actualidad, Tecnología)
+- API RESTful con Express
+- Desplegable con Docker
+- Tests con Mocha + Chai
+- Actualización automática de noticias RSS
 
 ---
 
@@ -289,12 +289,12 @@ news-platform/
 
 ## Seguridad Implementada
 
-- ✅ **Rate Limiting**: 100 peticiones por 15 minutos por IP
-- ✅ **Helmet**: Content Security Policy configurada
-- ✅ **XSS Protection**: Sanitización de entradas/salidas
-- ✅ **Validación de IDs**: Solo números positivos aceptados
-- ✅ **Parámetros seguros**: Queries con parámetros preparados
-- ✅ **Logs estructurados**: Winston con timestamps
+- **Rate Limiting**: 100 peticiones por 15 minutos por IP
+- **Helmet**: Content Security Policy configurada
+- **XSS Protection**: Sanitización de entradas/salidas
+- **Validación de IDs**: Solo números positivos aceptados
+- **Parámetros seguros**: Queries con parámetros preparados
+- **Logs estructurados**: Winston con timestamps
 
 ---
 
