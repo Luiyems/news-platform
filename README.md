@@ -108,7 +108,7 @@ http://localhost:3000
 
 ```bash
 git clone https://github.com/Luiyems/news-platform.git
-cd el-rayo
+cd news-platform
 ```
 
 ### Paso 2: Crear archivo de variables de entorno
