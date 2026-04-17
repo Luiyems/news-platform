@@ -211,7 +211,7 @@ Desde Swagger podrás:
 - Ver parámetros y respuestas de cada endpoint
 - Ver la documentación automática de la API
 
-**Nota:** Swagger solo está disponible en el entorno de desarrollo.
+**Nota:** Swagger está disponible en modo desarrollo y producción.
 
 ### Ejemplos de uso
 
