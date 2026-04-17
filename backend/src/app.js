@@ -96,7 +96,7 @@ app.get("/health", (req, res) => {
 app.use("/api/news", newsRoutes);
 // Configura la ruta "/api-docs" para mostrar la documentación interactiva
 // de la API usando Swagger UI (solo en desarrollo)
-if (process.env.NODE_ENV !== "production") {
+if (process.env.NODE_ENV !== "production" || process.env.ENABLE_SWAGGER === "true") {
     app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 }
 
