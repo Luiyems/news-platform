@@ -4,6 +4,15 @@ CREATE TABLE categories (
     name VARCHAR(100) UNIQUE NOT NULL
 );
 
+-- Datos iniciales de categorías
+INSERT INTO categories (id, name) VALUES
+(1, 'General'),
+(2, 'Tecnología'),
+(3, 'Deportes'),
+(4, 'Economía'),
+(5, 'Internacional')
+ON CONFLICT (id) DO NOTHING;
+
 -- Tabla de noticias
 CREATE TABLE news (
     id SERIAL PRIMARY KEY,

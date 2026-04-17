@@ -1,9 +1,9 @@
-# El rayo - Diario Minimalista de Noticias
+# El RAYO - Diario Minimalista de Noticias
 
 ![Docker](https://img.shields.io/badge/Docker-Ready-blue)
 ![Node.js](https://img.shields.io/badge/Node.js-18-green)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-14-blue)
-![WCAG](https://img.shields.io/badge/WCAG-2.1-AA-green)
+![WCAG 2.1 AA](https://img.shields.io/badge/WCAG-2.1%20AA-green)
 
 ---
 
@@ -125,7 +125,7 @@ cp .env.example .env
 # Construir imagen y ejecutar contenedores
 docker-compose up --build
 
-# O en (para no bloquear terminal)
+# (para no bloquear terminal)
 docker-compose up -d
 ```
 
