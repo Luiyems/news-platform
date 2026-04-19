@@ -46,7 +46,7 @@
 ---
 
 >[!TIP]
->Para ver el diagrama de arquitectura del sistema con acceso directo a los archivos, pulsa aquí:
+>Haz clic aquí para visualizar el diagrama de arquitectura del sistema con acceso directo a los archivos:
 > [Diagrama de arquitectura](https://gitdiagram.com/luiyems/news-platform)
 
 ---
