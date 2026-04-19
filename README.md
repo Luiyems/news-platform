@@ -46,8 +46,8 @@
 ---
 
 >[!TIP]
->Si quieres visuzalizar el diagrama de arquitectura del sistema con acceso directo a los archivos pulsa:
-> [Diagrama de flujo](https://gitdiagram.com/luiyems/news-platform)
+>Para ver el diagrama de arquitectura del sistema con acceso directo a los archivos, pulsa aquí:
+> [Diagrama de arquitectura](https://gitdiagram.com/luiyems/news-platform)
 
 ---
 
