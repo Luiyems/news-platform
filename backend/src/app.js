@@ -107,7 +107,7 @@ if (process.env.NODE_ENV !== "production" || process.env.ENABLE_SWAGGER === "tru
 /**
  * Ejecutar actualización de noticias automáticamente cada 30 minutos
  */
-cron.schedule("*/180 * * * *", async () => {
+cron.schedule("0 */3 * * *", async () => {
     await fetchRSSNews();
 });
 

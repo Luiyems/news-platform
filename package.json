@@ -5,8 +5,8 @@
   "type": "module",
   "main": "backend/server.js",
   "scripts": {
-    "test": "mocha tests/**/*.test.js --timeout 10000 --require dotenv/config",
-    "test:watch": "mocha tests/**/*.test.js --watch --require dotenv/config",
+    "test": "NODE_ENV=test mocha tests/**/*.test.js --timeout 10000 --require dotenv/config",
+    "test:watch": "NODE_ENV=test mocha tests/**/*.test.js --watch --require dotenv/config",
     "dev": "nodemon server.js",
     "start": "node server.js",
     "lint": "echo 'Lint checked'"

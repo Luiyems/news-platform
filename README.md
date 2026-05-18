@@ -245,6 +245,12 @@ curl http://localhost:3000/api/news/category/1
 | `DB_PASSWORD` | Contraseña de PostgreSQL | postgres |
 | `DB_NAME` | Nombre de la base de datos | news_platform |
 | `DB_PORT` | Puerto de PostgreSQL | 5432 |
+| `APP_BASE_URL` | URL pública de la app (Swagger/OpenAPI) | http://localhost:3000 |
+| `ENABLE_SWAGGER` | Habilita `/api-docs` | false |
+
+> [!NOTE]
+> En Render configura `DB_HOST`, `DB_PORT`, `DB_NAME`, `DB_USER` y `DB_PASSWORD` con los valores de tu servicio PostgreSQL.
+> Usa `APP_BASE_URL=https://tu-servicio.onrender.com` (o tu dominio final).
 
 ---
 

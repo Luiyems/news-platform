@@ -6,6 +6,8 @@
  * para documentar y probar la API.
  */
 import swaggerJSDoc from "swagger-jsdoc";
+
+const appBaseUrl = process.env.APP_BASE_URL || "http://localhost:3000";
 /**
  * Opciones de configuración de Swagger
  */
@@ -19,7 +21,7 @@ const options = {
         },
         servers: [
             {
-                url: "http://localhost:3000"
+                url: appBaseUrl
             }
         ]
     },
